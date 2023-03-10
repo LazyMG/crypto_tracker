@@ -23,17 +23,20 @@ const Container = styled.div`
 const Header = styled.div`
   height: 10vh;
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   align-items: center;
 `;
 
 const Button = styled.div`
   font-size: 25px;
+  width: 20%;
   color: ${(props) => props.theme.accentColor};
 `;
 
 const Title = styled.h1`
   font-size: 30px;
+  width: 60%;
+  text-align: center;
   color: ${(props) => props.theme.accentColor};
 `;
 
@@ -120,7 +123,7 @@ interface InfoData {
   last_data_at: string;
 }
 
-interface PriceData {
+export interface PriceData {
   id: string;
   name: string;
   symbol: string;
@@ -154,7 +157,11 @@ interface PriceData {
   };
 }
 
-function Coin() {
+interface ICoinProps {
+  isDark: boolean;
+}
+
+function Coin({ isDark }: ICoinProps) {
   const { coinId } = useParams<RouteParams>();
   const { state } = useLocation<RouteState>();
   const priceMatch = useRouteMatch("/:coinId/price");
@@ -188,9 +195,7 @@ function Coin() {
         <Title>
           {state?.name ? state.name : loading ? "Loading..." : infoData?.name}
         </Title>
-        <Button>
-          <Link to={"/"}>hi</Link>
-        </Button>
+        <Button></Button>
       </Header>
       {loading ? (
         <Loader>Loading...</Loader>
@@ -233,10 +238,10 @@ function Coin() {
 
           <Switch>
             <Route path={`/:coinId/price`}>
-              <Price />
+              <Price coinId={coinId} tickersData={tickersData} />
             </Route>
             <Route path={`/:coinId/chart`}>
-              <Chart coinId={coinId} />
+              <Chart coinId={coinId} isDark={isDark} />
             </Route>
           </Switch>
         </>
