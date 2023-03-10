@@ -6,10 +6,10 @@ function Router() {
   return (
     <HashRouter>
       <Switch>
-        <Route path="/:coinId">
+        <Route path="/">
           <Coin />
         </Route>
-        <Route path="/">
+        <Route path="/:coinId">
           <Coins />
         </Route>
       </Switch>
