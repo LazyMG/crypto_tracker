@@ -1,5 +1,6 @@
 {
   "name": "react-masterclass-typescript",
+  "homepage": "https://github.com/LazyMG/crypto_tracker.git",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
