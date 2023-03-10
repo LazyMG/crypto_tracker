@@ -7,10 +7,10 @@ function Router() {
     <HashRouter>
       <Switch>
         <Route path="/">
-          <Coin />
+          <Coins />
         </Route>
         <Route path="/:coinId">
-          <Coins />
+          <Coin />
         </Route>
       </Switch>
     </HashRouter>
